@@ -1,3 +1,4 @@
+const { v4: uuid } = require("uuid");
 const Workout = require("../database/workoutModel");
 
 const getAllWorkouts = async () => {
@@ -9,8 +10,15 @@ const getWorkoutById = async (id) => {
     return `Get workout with id ${id}`;
 };
 
-const createWorkout = async () => {
-    return "Create a new workout";
+const createWorkout = async (newWorkout) => {
+    const workout = {
+        ...newWorkout,
+        id: uuid(),
+        created_at : new Date().toLocaleString("en-US", {timeZone: "UTC"}),
+        updated_at : new Date().toLocaleString("en-US", {timeZone: "UTC"}),
+    };
+    const createdWorkout = await Workout.createNewWorkout(workout);
+    return createdWorkout;
 };
 
 const updateWorkout = async (id) => {
