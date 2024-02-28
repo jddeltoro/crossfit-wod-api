@@ -7,7 +7,8 @@ const getAllWorkouts = async () => {
 };
 
 const getWorkoutById = async (id) => {
-    return `Get workout with id ${id}`;
+    const workout = await Workout.getWorkoutById(id);
+    return workout;
 };
 
 const createWorkout = async (newWorkout) => {
@@ -17,16 +18,18 @@ const createWorkout = async (newWorkout) => {
         created_at : new Date().toLocaleString("en-US", {timeZone: "UTC"}),
         updated_at : new Date().toLocaleString("en-US", {timeZone: "UTC"}),
     };
-    const createdWorkout = await Workout.createNewWorkout(workout);
+    const createdWorkout = await Workout.createWorkout(workout);
     return createdWorkout;
 };
 
-const updateWorkout = async (id) => {
-    return `Update workout with id ${id}`;
+const updateWorkout = async (body, id) => {
+    const workout = await Workout.updateWorkout(body, id);
+    return workout;
 };
 
 const deleteWorkout = async (id) => {
-    return `Delete workout with id ${id}`;
+    const workout = await Workout.deleteWorkout(id);
+    return workout;
 };
 
 module.exports = {

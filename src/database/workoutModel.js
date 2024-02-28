@@ -5,10 +5,9 @@ const getAllWorkouts = async () => {
     return DB.workouts;
 };
 
-const createNewWorkout = async (workout) => {
+const createWorkout = async (workout) => {
     const alreadyExists = DB.workouts.find(w => w.name === workout.name);
     if (alreadyExists) {
-        console.log("Workout already exists");
         return {message: "Workout already exists"};
     }
     DB.workouts.push(workout);
@@ -16,7 +15,36 @@ const createNewWorkout = async (workout) => {
     return workout;
 };
 
+const getWorkoutById = async (id) => {
+    return DB.workouts.find(w => w.id === id);
+};
+
+const updateWorkout = async (workout, id) => {
+    const index = DB.workouts.findIndex(w => w.id === id);
+    if (index === -1) {
+        return {message: "Workout not found"};
+    }
+    DB.workouts[index] = workout;
+    saveToDB(DB);
+    return workout;
+}
+
+const deleteWorkout = async (id) => {
+    const index = DB.workouts.findIndex(w => w.id === id);
+    if (index === -1) {
+        return {message: "Workout not found"};
+    }
+    DB.workouts.splice(index, 1);
+    saveToDB(DB);
+    return {message: "Workout deleted"};
+}
+
+
+
 module.exports = {
     getAllWorkouts,
-    createNewWorkout
+    createWorkout,
+    getWorkoutById,
+    updateWorkout,
+    deleteWorkout
 };

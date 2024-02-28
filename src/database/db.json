@@ -44,24 +44,22 @@
       ]
     },
     {
-      "id": "d8be2362-7b68-4ea4-a1f6-03f8bc4eede7",
-      "name": "Heavy DT",
-      "mode": "5 Rounds For Time",
+      "name": "Core Buster 2.0",
+      "mode": "AMRAP 20",
       "equipment": [
+        "rack",
         "barbell",
-        "rope"
+        "abmat"
       ],
       "exercises": [
-        "12 deadlifts",
-        "9 hang power cleans",
-        "6 push jerks"
+        "15 toes to bars",
+        "10 thrusters",
+        "30 abmat sit-ups"
       ],
-      "createdAt": "11/20/2021, 5:39:07 PM",
-      "updatedAt": "11/20/2021, 5:39:07 PM",
       "trainerTips": [
-        "Aim for unbroken push jerks",
-        "The first three rounds might feel terrible, but stick to it",
-        "RX Weights: 205lb/145lb"
+        "Split your toes to bars into two sets maximum",
+        "Go unbroken on the thrusters",
+        "Take the abmat sit-ups as a chance to normalize your breath"
       ]
     },
     {

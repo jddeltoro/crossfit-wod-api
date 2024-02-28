@@ -1,13 +1,19 @@
  const workoutServices = require('../services/workoutServices');
 
 const getAllWorkouts = async (req, res) => {
+    console.log("getAllWorkouts");
     const workouts = await workoutServices.getAllWorkouts();
     res.send({status: "OK", data: workouts});
 };
 
 const getWorkoutById = async (req, res) => {
+    console.log(req.params);
+    if (!req.params.id) {
+        res.status(400).send({status: "ERROR", message: "Missing workout ID"});
+        return;
+    }
     const workout = await workoutServices.getWorkoutById(req.params.id);
-    res.send(workout);
+    res.send({ status: "OK", data: workout });
 };
 
 const createWorkout = async (req, res) => {
@@ -28,13 +34,22 @@ const createWorkout = async (req, res) => {
 };
 
 const updateWorkout = async (req, res) => {
-    const workout = await workoutServices.updateWorkout(req.params.id);
-    res.send(workout);
+    if (!req.params.id) {
+        res.status(400).send({status: "ERROR", message: "Missing workout ID"});
+        return;
+    }
+    const {body} = req;
+    const workout = await workoutServices.updateWorkout(body, req.params.id);
+    res.send({status: "OK", data: workout})
 };
 
 const deleteWorkout = async (req, res) => {
+    if (!req.params.id) {
+        res.status(400).send({status: "ERROR", message: "Missing workout ID"});
+        return;
+    }
     const workout = await workoutServices.deleteWorkout(req.params.id);
-    res.send(workout);
+    res.status(204).send({status: "OK", data: workout});
 };
 
 module.exports = {
