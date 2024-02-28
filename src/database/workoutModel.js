@@ -9,7 +9,7 @@ const createNewWorkout = async (workout) => {
     const alreadyExists = DB.workouts.find(w => w.name === workout.name);
     if (alreadyExists) {
         console.log("Workout already exists");
-        return;
+        return {message: "Workout already exists"};
     }
     DB.workouts.push(workout);
     saveToDB(DB);
