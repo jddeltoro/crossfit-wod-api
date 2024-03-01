@@ -18,9 +18,13 @@ const getWorkoutById = async (req, res) => {
 
 const createWorkout = async (req, res) => {
     const {body} = req;
-    if (!body.name || !body.mode || !body.equipment || !body.exercises || !body.trainerTips) {
-        res.status(400).send({status: "ERROR", message: "Missing required data"});
-        return;
+    let missingFields = ['name', 'mode', 'equipment', 'exercises', 'trainerTips'].filter(field => !body[field]);
+
+    if (missingFields.length) {
+        res.status(400).send({
+            status: "ERROR", 
+            message: `Missing required fields, fields missing in the request: ${missingFields.join(', ')}`
+        });
     }
     const workoutSeed = {
         name: body.name,
