@@ -56,10 +56,16 @@ const deleteWorkout = async (req, res) => {
     res.status(204).send({status: "OK", data: workout});
 };
 
+const getWorkoutsByMode = async (req, res) => {
+    const workouts = await workoutServices.getWorkoutsByMode(req.params.mode);
+    res.send({status: "OK", data: workouts});
+};
+
 module.exports = {
     getAllWorkouts,
     getWorkoutById,
     createWorkout,
     updateWorkout,
-    deleteWorkout
+    deleteWorkout,
+    getWorkoutsByMode
 };

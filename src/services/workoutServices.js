@@ -32,10 +32,16 @@ const deleteWorkout = async (id) => {
     return workout;
 };
 
+const getWorkoutsByMode = async (mode) => {
+    const workouts = await Workout.getWorkoutsByMode(mode);
+    return workouts;
+}
+
 module.exports = {
     getAllWorkouts,
     getWorkoutById,
     createWorkout,
     updateWorkout,
-    deleteWorkout
+    deleteWorkout,
+    getWorkoutsByMode
 };

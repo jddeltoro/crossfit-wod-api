@@ -78,6 +78,9 @@ const deleteWorkout = async (id) => {
     return {message: "Workout deleted"};
 }
 
+const getWorkoutsByMode = async (mode) => {
+    return DB.workouts.filter(w => w.mode === mode);
+}
 
 
 module.exports = {
