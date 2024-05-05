@@ -52,4 +52,5 @@ router.patch('/:id', workoutController.updateWorkout);
 
 router.delete('/:id', workoutController.deleteWorkout);
 
+
 module.exports = router;
